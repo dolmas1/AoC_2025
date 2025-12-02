@@ -33,10 +33,10 @@ def solve_pt2(puzzle_input):
     ans = 0
     for l in puzzle_input:
         x = int(l[1:])
-        dir = l[0]
+        direc = l[0]
 
         for i in range(x):
-            if dir == 'L':
+            if direc == 'L':
                 pos += -1
                 if pos == -1:
                     pos = 99
@@ -48,6 +48,7 @@ def solve_pt2(puzzle_input):
                     ans += 1
         #print(pos, ans)
     return ans
+
 
 puzzle_input = parse_input(filename)
 ans_1 = solve_pt1(puzzle_input)

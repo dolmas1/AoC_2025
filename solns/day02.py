@@ -13,35 +13,33 @@ def parse_input(filename):
         puzzle_input = [l.strip().split('-') for l in f.read().split(',')]
     return puzzle_input
 
-def solve_pt1(puzzle_input):
-    ans = []
+def solve(puzzle_input):
+    ans1 = []
+    ans2 = []
+
     for pairs in puzzle_input:
         for i in range(int(pairs[0]), int(pairs[1])+1):
             x = str(i)
             lenx = len(x)
             
+            # Part 1
             if lenx % 2 == 0:
                 splitpoint = int(lenx / 2)
                 leftx = x[:splitpoint]
                 rightx = x[splitpoint:]
                 if leftx == rightx:
-                    ans.append(i)
-    return sum(ans)
+                    ans1.append(i)
 
-
-def solve_pt2(puzzle_input):
-    ans = []
-    for pairs in puzzle_input:
-        for i in range(int(pairs[0]), int(pairs[1])+1):
-            x = str(i)
+            # Part 2
             if re.match(r'^(\d+)\1+$', x):
                 #print(i)
-                ans.append(i)
-    return sum(ans)
+                ans2.append(i)
+
+    return sum(ans1), sum(ans2)
+
 
 puzzle_input = parse_input(filename)
-ans_1 = solve_pt1(puzzle_input)
-ans_2 = solve_pt2(puzzle_input)
+ans_1, ans_2 = solve(puzzle_input)
 
 print(ans_1)
 print(ans_2)
