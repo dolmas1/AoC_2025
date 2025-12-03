@@ -44,6 +44,8 @@ def find_peak(l, start_pos, digits_to_spare):
         if digit > best_digit:
             best_digit = digit
             best_pos = start_pos + 1 + i
+            if digit == '9':
+                break
     #print(f'finding best dig in {l[start_pos:len(l)-digits_to_spare]}: {best_digit}')
     return best_digit, best_pos
 
