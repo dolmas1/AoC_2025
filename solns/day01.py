@@ -38,6 +38,7 @@ def solve(puzzle_input):
 
     return ans1, ans2
 
+
 puzzle_input = parse_input(filename)
 ans_1, ans_2 = solve(puzzle_input)
 
