@@ -2,7 +2,7 @@
 #from collections import Counter
 import sys
 sys.path.append('utils/')
-from utils.grid import Grid
+from grid import Grid
 
 sample = False
 
