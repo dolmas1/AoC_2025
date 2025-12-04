@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from collections import Counter
+#from collections import Counter
 sample = False
 
 if sample:
@@ -71,7 +71,7 @@ class Grid:
             for y in range(self.y_max):
                 if self.lookup(x, y) == '@':
                     neighbours = self.get_neighbours(x, y)
-                    if Counter(neighbours)['@'] < 4:
+                    if neighbours.count('@') < 4:
                         rolls.append([x, y])
         return rolls
 
@@ -85,7 +85,7 @@ class Grid:
             for y in range(self.y_max):
                 if self.lookup(x, y) == '@':
                     neighbours = self.get_neighbours(x, y)
-                    if Counter(neighbours)['@'] < 4:
+                    if neighbours.count('@') < 4:
                         self.assign(x, y, 'x')
                         ans += 1
         return ans
