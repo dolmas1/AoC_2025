@@ -55,23 +55,23 @@ class Grid:
         rolls = []
         for x in range(self.x_max):
             for y in range(self.y_max):
-                if self.lookup(x, y) == '@':
+                if self.lookup(x, y):
                     neighbours = self.get_neighbours(x, y)
-                    if neighbours.count('@') < 4:
+                    if sum(neighbours) < 4:
                         rolls.append([x, y])
         return rolls
 
     def remove_rolls(self, roll_locations):
         for [x, y] in roll_locations:
-            self.assign(x, y, 'x')
+            self.assign(x, y, False)
         
     def find_and_remove_rolls(self):
         ans = 0
         for x in range(self.x_max):
             for y in range(self.y_max):
-                if self.lookup(x, y) == '@':
+                if self.lookup(x, y):
                     neighbours = self.get_neighbours(x, y)
-                    if neighbours.count('@') < 4:
-                        self.assign(x, y, 'x')
+                    if sum(neighbours) < 4:
+                        self.assign(x, y, False)
                         ans += 1
         return ans

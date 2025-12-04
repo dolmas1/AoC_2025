@@ -2,7 +2,7 @@
 #from collections import Counter
 import sys
 sys.path.append('utils/')
-from grid import Grid
+from utils.grid import Grid
 
 sample = False
 
@@ -13,7 +13,7 @@ else:
 
 def parse_input(filename):
     with open(filename) as f:
-        puzzle_input = [l.strip() for l in f.readlines()]
+        puzzle_input = [[c == '@' for c in l.strip()] for l in f.readlines()]
     return puzzle_input
 
 
