@@ -27,28 +27,28 @@ def solve_pt1(puzzle_input):
         #print(pos, ans)
     return ans
 
-
 def solve_pt2(puzzle_input):
     pos = 50
     ans = 0
     for l in puzzle_input:
         x = int(l[1:])
-        direc = l[0]
 
-        for i in range(x):
-            if direc == 'L':
-                pos += -1
-                if pos == -1:
-                    pos = 99
-            else:
-                pos += 1
-                if pos == 100:
-                    pos = 0
-            if pos == 0:
-                    ans += 1
-        #print(pos, ans)
+        div, x = divmod(x, 100)
+        if div > 0:
+            ans += div
+        
+        if l[0] == 'R':
+            new_pos = (pos + x) % 100
+            if new_pos < pos:
+                ans += 1
+            pos = new_pos
+        else:
+            new_pos = (pos - x) % 100
+            if (new_pos > pos and pos > 0) | (new_pos == 0):
+                ans += 1
+            pos = new_pos
+
     return ans
-
 
 puzzle_input = parse_input(filename)
 ans_1 = solve_pt1(puzzle_input)
