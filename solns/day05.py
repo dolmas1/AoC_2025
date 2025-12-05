@@ -20,13 +20,16 @@ def parse_input(filename):
                 ingredients.append(int(l.strip()))
     return ranges, ingredients
 
-
 def solve_pt1(ranges, ingredients):
     ans = 0
+    #ingredients = sorted(ingredients)
+    ranges = sorted(ranges)
     for i in ingredients:
         for r in ranges:
             if (i >= r[0]) & (i <= r[1]):
                 ans += 1
+                break
+            if i < r[0]:
                 break
     return ans
 
