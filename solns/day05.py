@@ -71,9 +71,9 @@ def solve_pt2(ranges):
 
 
 ranges, ingredients = parse_input(filename)
-#ans_2, ranges = solve_pt2(ranges)
-ans_1 = solve_pt1(ranges, ingredients)
 ans_2, ranges = solve_pt2(ranges)
+ans_1 = solve_pt1(ranges, ingredients)
+
 
 print(ans_1)
 print(ans_2)
