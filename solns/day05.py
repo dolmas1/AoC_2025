@@ -11,13 +11,12 @@ def parse_input(filename):
     ranges = []
     ingredients = []
     with open(filename, 'r') as f:
-        for l in f.readlines():
-            if '-' in l:
-                ranges.append([int(_) for _ in l.strip().split('-')])
-            elif l.strip() == '':
-                pass
-            else:
-                ingredients.append(int(l.strip()))
+        lines = [line.strip() for line in f]
+
+    i = lines.index('')
+    ranges = [[int(_) for _ in l.split('-')] for l in lines[:i]]
+    ingredients = [int(l) for l in lines[i+1:]]
+            
     return ranges, ingredients
 
 def solve_pt1(ranges, ingredients):
